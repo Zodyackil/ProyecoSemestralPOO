@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -58,6 +59,8 @@ public class ProductosModificar extends javax.swing.JInternalFrame {
                 filas[12] = rs.getString("bodega");
 
                 modelo.addRow(filas);
+                /**TableColumnModel columnModel = tablaProductos.getColumnModel();
+                columnModel.getColumn(1).setPreferredWidth(15);*/
             }
 
             tablaProductos.setModel(modelo);
@@ -82,9 +85,8 @@ public class ProductosModificar extends javax.swing.JInternalFrame {
         ProductoModificado.txtAlto.setText(tablaProductos.getValueAt(fila, 4).toString());
         ProductoModificado.txtLargo.setText(tablaProductos.getValueAt(fila, 5).toString());
         ProductoModificado.txtAncho.setText(tablaProductos.getValueAt(fila, 6).toString());
-        ProductoModificado.txtCompra.setText(tablaProductos.getValueAt(fila, 7).toString());
-        ProductoModificado.txtVenta.setText(tablaProductos.getValueAt(fila, 8).toString());
-        ProductoModificado.txtTipo.setText(tablaProductos.getValueAt(fila, 9).toString());
+        ProductoModificado.comboVenta.setSelectedItem(tablaProductos.getValueAt(fila, 8).toString());
+        ProductoModificado.comboTipo.setSelectedItem(tablaProductos.getValueAt(fila, 9).toString());
         ProductoModificado.txtCantidad.setText(tablaProductos.getValueAt(fila, 10).toString());
         ProductoModificado.txtEan.setText(tablaProductos.getValueAt(fila, 11).toString());
         ProductoModificado.txtBodega.setText(tablaProductos.getValueAt(fila, 12).toString());
@@ -117,16 +119,29 @@ public class ProductosModificar extends javax.swing.JInternalFrame {
 
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Codigo", "Nombre", "Title 4", "null", "null", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaProductos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane1.setViewportView(tablaProductos);
+        if (tablaProductos.getColumnModel().getColumnCount() > 0) {
+            tablaProductos.getColumnModel().getColumn(0).setResizable(false);
+            tablaProductos.getColumnModel().getColumn(0).setPreferredWidth(33);
+        }
 
         jButton1.setText("Modificar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -144,14 +159,12 @@ public class ProductosModificar extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(368, 368, 368)
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(368, 368, 368)
+                                .addComponent(jButton1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addGroup(layout.createSequentialGroup()
@@ -159,8 +172,11 @@ public class ProductosModificar extends javax.swing.JInternalFrame {
                                         .addGap(36, 36, 36)
                                         .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(botonBuscar)))
-                                .addGap(0, 219, Short.MAX_VALUE)))))
+                                        .addComponent(botonBuscar)))))
+                        .addGap(0, 304, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -177,7 +193,7 @@ public class ProductosModificar extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();

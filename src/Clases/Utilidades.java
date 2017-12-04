@@ -5,15 +5,11 @@
  */
 package Clases;
 
-import Frames.Login;
-import java.awt.event.KeyEvent;
-
 /**
  *
  * @author juan carlos
  */
-public class Buscar extends Conexion{
+public class Utilidades {
     
-         
     
 }

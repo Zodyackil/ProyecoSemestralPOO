@@ -83,8 +83,6 @@ public class ProductoModificado extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtAlto = new javax.swing.JTextField();
         txtCompra = new javax.swing.JTextField();
-        txtVenta = new javax.swing.JTextField();
-        txtTipo = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -103,6 +101,9 @@ public class ProductoModificado extends javax.swing.JFrame {
         txtBodega = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         txtModelo = new javax.swing.JTextField();
+        comboTipo = new javax.swing.JComboBox<>();
+        comboVenta = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,6 +157,12 @@ public class ProductoModificado extends javax.swing.JFrame {
 
         jLabel17.setText("Modelo");
 
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perecible", "No perecible" }));
+
+        comboVenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "20", "30", "40", "50", "60", "70", "80", "90", "100" }));
+
+        jLabel18.setText("%");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -208,22 +215,27 @@ public class ProductoModificado extends javax.swing.JFrame {
                                     .addComponent(jLabel14)
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel13)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel1))
-                                .addGap(42, 42, 42)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtCompra)
-                                    .addComponent(txtVenta)
-                                    .addComponent(txtTipo)
-                                    .addComponent(txtCantidad)
-                                    .addComponent(txtEan)
-                                    .addComponent(txtBodega, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel15)
+                                        .addComponent(jLabel1))
+                                    .addGap(42, 42, 42)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(comboVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel18))
+                                            .addComponent(txtCompra, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtCantidad, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtEan, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtBodega, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel7)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -271,12 +283,13 @@ public class ProductoModificado extends javax.swing.JFrame {
                     .addComponent(txtCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(txtVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel18))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -350,6 +363,8 @@ public class ProductoModificado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JComboBox<String> comboTipo;
+    public static javax.swing.JComboBox<String> comboVenta;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -361,6 +376,7 @@ public class ProductoModificado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -381,7 +397,5 @@ public class ProductoModificado extends javax.swing.JFrame {
     public static javax.swing.JTextField txtLargo;
     public static javax.swing.JTextField txtModelo;
     public static javax.swing.JTextField txtNombre;
-    public static javax.swing.JTextField txtTipo;
-    public static javax.swing.JTextField txtVenta;
     // End of variables declaration//GEN-END:variables
 }

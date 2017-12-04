@@ -5,6 +5,7 @@
  */
 package Frames;
 
+import Clases.Buscar;
 import Clases.Conexion;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
@@ -15,6 +16,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -37,6 +40,8 @@ public class Login extends javax.swing.JFrame {
         Conexion cc = new Conexion();
         Connection cn = cc.Conexion();
         
+        
+       
         /** 
          * Metodo para luego llamarlo y acceder a la BD, redirijiendo a las ventanas
          * correspondientes al usuario.
@@ -74,7 +79,7 @@ public class Login extends javax.swing.JFrame {
 
         Nombre = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botonIngresar = new javax.swing.JButton();
         txtusuario = new javax.swing.JTextField();
         txtpass = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
@@ -85,10 +90,10 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setText("Contraseña");
 
-        jButton1.setText("Ingresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonIngresar.setText("Ingresar");
+        botonIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonIngresarActionPerformed(evt);
             }
         });
 
@@ -113,7 +118,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(73, 73, 73)
-                        .addComponent(jButton1)))
+                        .addComponent(botonIngresar)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -133,14 +138,14 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                        .addComponent(botonIngresar)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
     
         /**
          * Asigno a un String los valores de usuario y contraseña
@@ -149,10 +154,12 @@ public class Login extends javax.swing.JFrame {
         String usu, pass ;
         usu = txtusuario.getText();
         pass = txtpass.getText();
+              
+        acceder(usu, pass);
         
-        acceder(usu, pass); 
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_botonIngresarActionPerformed
 
   
     public static void main(String args[]) {
@@ -211,7 +218,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Nombre;
-    private javax.swing.JButton jButton1;
+    public static javax.swing.JButton botonIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField txtpass;

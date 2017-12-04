@@ -24,7 +24,7 @@ public class MantenedorModificar extends javax.swing.JInternalFrame {
     Conexion con = new Conexion();
     Connection cn = con.Conexion();
     Statement stmt = null;
-    String titulos[] = {"id", "codigo", "nombre", "usuario", "contraseña", "privilegio", "cargo"};
+    String titulos[] = {"ID", "Código", "Nombre", "Usuario", "Contraseña", "Privilegio", "Cargo"};
     String filas[] = new String[7];
     DefaultTableModel modelo;
        

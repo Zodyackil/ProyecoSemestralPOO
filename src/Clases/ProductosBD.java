@@ -49,7 +49,7 @@ public class ProductosBD {
             ps.setString(11, ProductosIngreso.txtEan.getText());
             ps.setString(12, (String) ProductosIngreso.comboBodega.getSelectedItem());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Producto ingresado.");
+            JOptionPane.showMessageDialog(null, "Producto ingresado, precio de venta $"+VentaBD+".");
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al registrar el producto.");
@@ -68,6 +68,12 @@ public class ProductosBD {
 
     public void actualizacion() {
         String id = ProductoModificado.txtId.getText();
+        String Compra = ProductoModificado.txtCompra.getText();
+        String Venta = (String) ProductoModificado.comboVenta.getSelectedItem();
+        double CompraInt = Integer.parseInt(Compra);
+        double VentaInt = Integer.parseInt(Venta);
+        double VentaInt2 = (VentaInt) / (100);
+        double VentaBD = CompraInt + ((CompraInt) * (VentaInt2));
         try {
             PreparedStatement stmtCodigo = cn.prepareStatement("UPDATE productos SET codigo = '" + ProductoModificado.txtCodigo.getText() + "' WHERE id = '" + id + "'");
             PreparedStatement stmtNombre = cn.prepareStatement("UPDATE productos SET nombre = '" + ProductoModificado.txtNombre.getText() + "' WHERE id = '" + id + "'");
@@ -75,9 +81,9 @@ public class ProductosBD {
             PreparedStatement stmtAlto = cn.prepareStatement("UPDATE productos SET dimensiones_alto = '" + ProductoModificado.txtAlto.getText() + "' WHERE id = '" + id + "'");
             PreparedStatement stmtLargo = cn.prepareStatement("UPDATE productos SET dimensiones_largo = '" + ProductoModificado.txtLargo.getText() + "' WHERE id = '" + id + "'");
             PreparedStatement stmtAncho = cn.prepareStatement("UPDATE productos SET dimensiones_ancho = '" + ProductoModificado.txtAncho.getText() + "' WHERE id = '" + id + "'");
-            PreparedStatement stmtPreCompra = cn.prepareStatement("UPDATE productos SET pre_compra = '" + ProductoModificado.txtCompra.getText() + "' WHERE id = '" + id + "'");
-            PreparedStatement stmtPreVenta = cn.prepareStatement("UPDATE productos SET pre_venta = '" + ProductoModificado.txtVenta.getText() + "' WHERE id = '" + id + "'");
-            PreparedStatement stmtTipo = cn.prepareStatement("UPDATE productos SET tipo = '" + ProductoModificado.txtTipo.getText() + "' WHERE id = '" + id + "'");
+            PreparedStatement stmtPreCompra = cn.prepareStatement("UPDATE productos SET pre_compra = '" + Compra + "' WHERE id = '" + id + "'");
+            PreparedStatement stmtPreVenta = cn.prepareStatement("UPDATE productos SET pre_venta = '" + VentaBD + "' WHERE id = '" + id + "'");
+            PreparedStatement stmtTipo = cn.prepareStatement("UPDATE productos SET tipo = '" + ProductoModificado.comboTipo.getSelectedItem() + "' WHERE id = '" + id + "'");
             PreparedStatement stmtCantidad = cn.prepareStatement("UPDATE productos SET cantidad = '" + ProductoModificado.txtCantidad.getText() + "' WHERE id = '" + id + "'");
             PreparedStatement stmtEan = cn.prepareStatement("UPDATE productos SET ean = '" + ProductoModificado.txtEan.getText() + "' WHERE id = '" + id + "'");
             PreparedStatement stmtBodega = cn.prepareStatement("UPDATE productos SET bodega = '" + ProductoModificado.txtBodega.getText() + "' WHERE id = '" + id + "'");
@@ -95,7 +101,7 @@ public class ProductosBD {
             stmtEan.executeUpdate();
             stmtBodega.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Producto actualizado.");
+            JOptionPane.showMessageDialog(null, "Producto actualizado. El precio de venta se actualizo a $" +VentaBD+".");
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al actualizar el producto.");
@@ -111,4 +117,7 @@ public class ProductosBD {
             }
         }
     }
+    
+  
 }
+    
